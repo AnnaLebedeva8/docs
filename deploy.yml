@@ -1,0 +1,26 @@
+---
+  - hosts:
+      - all
+
+    gather_facts: yes
+    become: true
+
+    tasks:
+
+      - name: deploy new site content
+        synchronize:
+          src: public_html/
+          dest: /var/www/virtual/landing/github/
+          checksum: yes
+          times: no
+          delete: yes
+          recursive: yes
+
+      - name: change owner
+        file:
+          path: /var/www/virtual/landing/github
+          state: directory
+          owner: nginx
+          group: nginx
+          mode: 0755
+          recurse: yes
