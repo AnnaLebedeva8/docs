@@ -2,9 +2,9 @@
 sidebar_position: 1
 ---
 
-# Create a Page
+# Create your first bot
 
-Add **Markdown or React** files to `src/pages` to create a **standalone page**:
+Add **Your new bot** files to `src/pages` to create a **standalone page**:
 
 - `src/pages/index.js` → `localhost:3000/`
 - `src/pages/foo.md` → `localhost:3000/foo`
