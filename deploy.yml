@@ -22,5 +22,5 @@
           state: directory
           owner: nginx
           group: nginx
-          mode: 0755
+          mode: 0777
           recurse: yes
