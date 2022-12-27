@@ -31,4 +31,4 @@
           chdir: /var/www/virtual/landing/github/
           
       - name: place built static content in the right place
-        command: cp -r /var/www/virtual/landing/github/build/ /var/www/virtual/landing/docusaurus/
+        command: /bin/cp -rf /var/www/virtual/landing/github/build/ /var/www/virtual/landing/docusaurus/
