@@ -16,11 +16,19 @@
           delete: yes
           recursive: yes
 
-      - name: change owner
+      - name: change owner/group/chmod
         file:
           path: /var/www/virtual/landing/github
           state: directory
           owner: nginx
           group: nginx
-          mode: 0777
+          mode: 0755
           recurse: yes
+      
+      - name: build static site
+        command: npm run build
+        args:
+          chdir: /var/www/virtual/landing/github/
+          
+      - name: place built static content in the right place
+        command: cp -r /var/www/virtual/landing/github/build/ /var/www/virtual/landing/docusaurus/
