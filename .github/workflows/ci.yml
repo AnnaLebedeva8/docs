@@ -37,15 +37,18 @@ jobs:
         run: |
           echo "docs_site ansible_host=${{secrets.DEPLOY_HOST}} ansible_port=${{secrets.DEPLOY_PORT}} ansible_user=${{secrets.DEPLOY_USER}} ansible_ssh_pass=${{secrets.DEPLOY_SSH_PASS}} ansible_ssh_common_args='-o StrictHostKeyChecking=no'" > hosts
 
-      - name: Install nodejs and npm
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+
+      - name: Install npm and node dependencies
         run: |
-          sudo apt-get install nodejs npm -y
-          node -v
-          npm -v
+          cd public_hmtl
+          npm install
 
       - name: Build static site content
         run: |
-          cd public_html
           sudo npm run build
           ls -al
 
