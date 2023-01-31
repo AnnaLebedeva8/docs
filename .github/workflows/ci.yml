@@ -52,7 +52,7 @@ jobs:
         run: |
           cd public_html
           mkdir build
-          sudo npm run build
+          sudo yarn build
           ls -al
 
 #      - name: Check ansible playbook syntax
