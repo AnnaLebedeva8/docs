@@ -46,7 +46,7 @@ jobs:
       - name: Build static site content
         run: |
           cd public_html
-          npm run build
+          sudo npm run build
           ls -al
 
       - name: Check ansible playbook syntax
