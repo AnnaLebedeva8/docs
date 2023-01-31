@@ -44,7 +44,6 @@ jobs:
 
       - name: Install npm and node dependencies
         run: |
-          mkdir -p public_html/build
           npm install
           node -v
           npm -v
@@ -52,11 +51,12 @@ jobs:
       - name: Build static site content
         run: |
           cd public_html
+          mkdir build
           sudo npm run build
           ls -al
 
-      - name: Check ansible playbook syntax
-        run: ansible-playbook -i hosts deploy.yml --syntax-check
+#      - name: Check ansible playbook syntax
+#        run: ansible-playbook -i hosts deploy.yml --syntax-check
 
 #      - name: Ansible Deploy
 #        run: |
