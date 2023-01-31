@@ -49,6 +49,7 @@ jobs:
 
       - name: Build static site content
         run: |
+          cd public_html
           sudo npm run build
           ls -al
 
