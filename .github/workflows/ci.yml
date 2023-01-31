@@ -42,9 +42,9 @@ jobs:
         with:
           node-version: '16.x'
 
-      - name: Install npm and node dependencies
+      - name: chown
         run: |
-          sudo npm install -g docusaurus
+          sudo chown $USER.$USER public_html/ -R
 
       - name: Build static site content
         run: |
