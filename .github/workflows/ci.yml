@@ -44,7 +44,7 @@ jobs:
 
       - name: Install npm and node dependencies
         run: |
-          cd public_hmtl
+          cd public_html
           npm install
 
       - name: Build static site content
