@@ -37,25 +37,25 @@ jobs:
         run: |
           echo "docs_site ansible_host=${{secrets.DEPLOY_HOST}} ansible_port=${{secrets.DEPLOY_PORT}} ansible_user=${{secrets.DEPLOY_USER}} ansible_ssh_pass=${{secrets.DEPLOY_SSH_PASS}} ansible_ssh_common_args='-o StrictHostKeyChecking=no'" > hosts
 
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'
+#      - name: Use Node.js
+#        uses: actions/setup-node@v3
+#        with:
+#         node-version: '16.x'
 
-      - name: chown
-        run: |
-          sudo chown $USER.$USER public_html/ -R
-
-      - name: Build static site content
-        run: |
-          cd public_html
-          mkdir build
-          sudo yarn build
-          ls -al
-
-#      - name: Check ansible playbook syntax
-#        run: ansible-playbook -i hosts deploy.yml --syntax-check
-
-#      - name: Ansible Deploy
+#      - name: chown
 #        run: |
-#          ansible-playbook -i hosts deploy.yml
+#          sudo chown $USER.$USER public_html/ -R
+
+#      - name: Build static site content
+#        run: |
+#          cd public_html
+#          mkdir build
+#          sudo yarn build
+#          ls -al
+
+      - name: Check ansible playbook syntax
+        run: ansible-playbook -i hosts deploy.yml --syntax-check
+
+      - name: Ansible Deploy
+        run: |
+          ansible-playbook -i hosts deploy.yml
